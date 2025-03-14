@@ -53,6 +53,7 @@ app.get("/movies/search", (c) => {
     : c.json({ error: "No movies found!!!" }, 404);
 });
   
+// Get top-rated movies
 app.get("/movies/top-rated", (c) => {
   if (movies.length === 0) return c.json({ error: "No movies found-->" }, 404);
   const sortedMovies = [...movies]
@@ -109,10 +110,6 @@ app.get("/movies/:id/rating", (c) => {
   return c.json({ averageRating: avgRating });
 });
 
-// Get top-rated movies
-
-
-
 // Get movies by genre
 app.get("/movies/genre/:genre", (c) => {
   const { genre } = c.req.param();
@@ -134,9 +131,5 @@ app.get("/movies/director/:director", (c) => {
     ? c.json(result)
     : c.json({ error: " movies not exit%%%%" }, 404);
 });
-
-
-
-  
 
 serve(app);  
